@@ -1,0 +1,21 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Imagined Search</a>
+        </li>
+       
+      </ul>
+    </div>
+    {% if request.user.is_authenticated %}
+  <span><a class="nav-link" href="{%url 'accounts:logout' %}">logout</a></span>
+    {% else %}
+    <span > <a href="{%url 'accounts:auth-register'%}" style="color: white; padding-right:5px ;">Reistration</a></span> <span style="color: brown;">or</span> 
+    <span > <a href="{%url 'accounts:auth-login'%}" style="color: white; padding-left:5px ;" >login</a></span>
+{%endif %}
+  </nav>

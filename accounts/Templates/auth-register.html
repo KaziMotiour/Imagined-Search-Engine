@@ -1,0 +1,55 @@
+
+{% extends 'main.html'%}
+{% block body %}
+
+
+<div class="p-2 mt-5">
+
+    <p class="pageDetail">Registration Form</p>
+
+    <form  action=""  method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for message in messages %}
+    <div class="alert {{ message.tags }} mb-4" role="alert">
+        <strong>{{ message }}</strong>
+    </div>
+    {% endfor %}                                                 
+    <div class="mb-3" id='err-msg' hidden>
+    <strong id="msg_err"></strong>
+    </div>
+        <div class="auth-form-group-custom mb-4">
+            <label for="exampleInputEmail1">{{form.email.label}}</label>
+            {{form.email }}
+        </div>
+
+        <div class="auth-form-group-custom mb-4">
+            <label for="exampleInputEmail1">{{form.username.label}}</label>
+            {{form.username }}
+        </div>
+
+        <div class="auth-form-group-custom mb-4">
+            <label for="exampleInputEmail1">{{form.password1.label}}</label>
+            {{form.password1 }}
+        </div>
+
+        <div class="auth-form-group-custom mb-4">
+            <label for="exampleInputEmail1">{{form.password2.label}}</label>
+            <i class="ri-lock-2-line auti-custom-input-icon"></i>
+            {{form.password2}}
+        </div>
+
+        <div class="text-center">
+            <button class="btn btn-primary w-md waves-effect waves-light" type="submit" id="user-register" >Register</button>
+        </div>
+
+        <div class="mt-4 text-center">
+            <p class="mb-0">Back to  <a href="{% url 'accounts:auth-login' %}" class="text-primary">login</a></p>
+        </div>
+    </form>
+</div>
+
+
+
+
+{% endblock body %}
+
