@@ -4,6 +4,7 @@
 
 
 <div class="p-2 mt-5">
+    <p class="pageDetail">Login Form</p>
     <form  action=""  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     {% for message in messages %}
@@ -27,11 +28,11 @@
         </div>
 
         <div class="text-center">
-            <button class="btn btn-primary w-md waves-effect waves-light" type="submit" id="user-register" >Register</button>
+            <button class="btn btn-primary w-md waves-effect waves-light" type="submit" id="user-register" >Login</button>
         </div>
 
         <div class="mt-4 text-center">
-            <p class="mb-0">Back to  <a href="{% url 'accounts:auth-register' %}" class="text-primary">login</a></p>
+            <p class="mb-0"> Don't have an account ? <a href="{% url 'accounts:auth-register' %}" class="text-primary">Register</a></p>
         </div>
     </form>
 </div>

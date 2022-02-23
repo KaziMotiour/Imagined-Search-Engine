@@ -17,8 +17,8 @@ from django.contrib import messages
 class UserLoginView(View):
     username = []
     def get(self,request):
-        if 'username' in request.session:
-            return redirect('accounts:dashboard')
+        if request.user.is_authenticated:
+            return redirect('search:search_google')
         else:
             greeting={}
             greeting['form'] = UserLoginForm
@@ -32,13 +32,10 @@ class UserLoginView(View):
             if(username != '' and password != ''):
                 user = auth.authenticate(username=username, password=password)
                 if user is not None:       
-                    request.session['username'] = username
                     auth.login(request, user)
-                    request.session.set_expiry(300)
                     UserLoginView.username.append(username)
                     data={}
                     data['success_message'] ='Successfully login'
-                    messages.add_message(request, messages.SUCCESS, 'Successfully  login.')
                     return redirect('accounts:auth-login')
                  
                 else:

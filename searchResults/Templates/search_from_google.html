@@ -1,0 +1,78 @@
+
+{% extends 'main.html'%}
+
+
+{% block header%}
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/search.css'%}">
+
+{% endblock header%}  
+
+{% block body %}
+<div>
+
+ <div class="columns is-mobile">
+  <div class="column is-offset-one-fifth">
+
+<div id="search" class="field has-addons">
+    <form>
+
+        <div class="input-group mb-3">
+            <input type="text" name="q" class="form-control" placeholder="Search from google" aria-label="Recipient's username" aria-describedby="basic-addon2"
+            value="{{ request.GET.q }}"
+            >
+            <div class="input-group-append">
+                <button type="submit" class="button is-success">Search</button>
+          </div>
+          
+
+      {% comment %} <div class="control">
+        <input class="input is-large" name="q" type="text" placeholder="Search users..." value="{{ request.GET.q }}">
+      </div>
+      <div class="control">
+          <button type="submit" class="button is-success">Search</button>
+      </div> {% endcomment %}
+      </form>
+   
+    </div>
+    <div style="margin-top:-15px; margin-bottom:10px; ">
+        <span style="color:green; ">Search anything from Amazon, stackOverFlow, django documentation, python documentation, github..</span>
+    </div>
+
+    <div class="column is-one-quarter">
+
+      
+        <div class="box">
+          <article class="media">
+         
+            <div class="media-content">
+                <div class='userInfo'>
+                    <span>User: {{search_result.user}}</span><br/>
+                    {%if search_result.search_keyword%}
+                    <span>Keyword: {{search_result.search_keyword}}</span>
+                    {%endif%}
+                </div>
+
+              <div class="content">
+                  {%if search_items%}
+                  {% for item in search_items%}
+                <p>
+                  <span class='site-link' style='font-size:12px'>{{item.site_link}}</span><br/>
+                  <strong><a href="{{item.site_link}}" target="_blank" class="button is-info">{{item.site_title}}</a></strong><br/>
+                  <span>{{item.site_description}}</span>
+                </p>
+                {%endfor%}
+                {%endif%}
+              </div>
+
+            </div>
+          </article>
+        </div>
+      
+            
+        
+        </div>
+</div>
+
+
+{% endblock body %}

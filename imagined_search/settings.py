@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'accounts',
     'searchResults',
     'crispy_forms',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,6 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+
+LOGIN_URL = 'accounts:auth-login'
+LOGIN_REDIRECT_URL = 'accounts:auth-login'

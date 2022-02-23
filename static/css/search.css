@@ -1,0 +1,19 @@
+#search{
+    margin-top: 20px;
+    width:100%;
+    height: 100px;
+    text-align: center;
+}
+.site-link{
+    font-size: 5px;
+}
+
+.content{
+  
+    width:100%;
+}
+
+.userInfo{
+    margin: 5px;
+    margin-bottom: 10px;
+}
