@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'searchResults',
     'crispy_forms',
     'rest_framework',
-    
 ]
 
 MIDDLEWARE = [
