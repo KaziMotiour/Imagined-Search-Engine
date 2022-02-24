@@ -22,7 +22,7 @@ class UserLoginView(View):
         else:
             greeting={}
             greeting['form'] = UserLoginForm
-            return render(request,'auth-login.html', greeting)
+            return render(request,'accounts:auth-login.html', greeting)
 
     def post(self,request):
         if(request.method == "POST"):
@@ -60,7 +60,7 @@ class UserRegisterView(View):
         if request.user.is_authenticated:
             return redirect('search:search_google')
         auth.logout(request)
-        return render(request,'auth-register.html',greeting)
+        return render(request,'accounts:auth-register.html',greeting)
     def post(self,request):
         if request.method == "POST":
             email = request.POST.get('email')
