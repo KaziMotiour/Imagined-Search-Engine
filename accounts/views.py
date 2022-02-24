@@ -57,6 +57,8 @@ class UserRegisterView(View):
     def get(self,request):
         greeting={}
         greeting['form'] = UserRegistrationForm
+        if request.user.is_authenticated:
+            return redirect('search:search_google')
         auth.logout(request)
         return render(request,'auth-register.html',greeting)
     def post(self,request):

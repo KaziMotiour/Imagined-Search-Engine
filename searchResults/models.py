@@ -12,6 +12,8 @@ class SearchDetails(models.Model):
     search_keyword = models.CharField( max_length=1000)
     number_of_result=models.IntegerField(default=0)
     timestamp = models.DateTimeField( auto_now_add=True)
+    class Meta:
+        ordering = ('-timestamp',)
 
 class searchItems(models.Model):
     search_detail = models.ForeignKey(SearchDetails, related_name='search_detail', on_delete=models.CASCADE)
@@ -19,3 +21,5 @@ class searchItems(models.Model):
     site_title = models.CharField(max_length=500)
     site_description  = models.CharField(max_length=1000)
     timestamp = models.DateTimeField( auto_now_add=True)
+    class Meta:
+        ordering = ('-timestamp',)

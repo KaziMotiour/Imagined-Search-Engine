@@ -1,42 +1,97 @@
-{% extends 'main.html'%}
+{% extends 'main.html'%} {% block header%} {% load static %}
+<link rel="stylesheet" href="{% static 'css/searchHistory.css'%}" />
+<script src="{% static 'js/search_history.js' %} " defer></script>
+<link
+  rel="stylesheet"
+  href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"
+/>
+<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
-
-{% block header%}
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css/searchHistory.css'%}">
-
-{% endblock header%}  
-
-{% block body %}
+{% endblock header%} {% block body %}
 
 <div class="container">
-    <div class='title'>
+  <div class="title">Search History</div>
+  <div class="flex">
+    <div class="row1">
+      <div style="overflow: scroll;  overflow-x: hidden;  max-height:300px">
+        <p style="color:blue;">Filter by User</p>
+        <form>
+          {%for user in users%}
+          <input
+            type="checkbox"
+            name="user"
+            value="{{user.username}}"
+            class="mycheck"
+          />
+          {{user.username}}<br />
 
-        Search History
-    </div>
-    <div class="flex">
-        <div class="row1">
-            <div >
-                <h2>dsafds</h2>
-            </div>
-            <div>
-                <h2>dsafds</h2>
-            </div>
-        </div>
-        <div class="row2">
-            <h1>hello</h1>
-        </div>
+          {%endfor%}
+        </form>
+      </div>
 
-        <div class="row3">
-            <div >
-                <h2>dsafds</h2>
-            </div>
-            <div>
-                <h2>dsafds</h2>
-            </div>
-        </div>
-        
+      <div >
+        <p style="color:blue;">Filter by Keyword</p>
+        <form style="overflow: scroll; max-height:500px; overflow-x: hidden;">
+          {%for keyword in keywords%}
+          <br />
+          <input
+            type="checkbox"
+            name="keyword"
+            value="{{keyword.search_keyword}}"
+            class="mycheck"
+          />
+          {{keyword.search_keyword}} ({{keyword.number_of_result}})<br />
+          {%endfor%}    
+        </form>
+      </div>
     </div>
+
+    {% comment %} list of elemets {% endcomment %}
+    <div class="row2" >
+      
+      <ul id="myList" style="max-height:800px; overflow: scroll;  overflow-x: hidden;"></ul>
+    </div>
+    {% comment %} end list of elemets {% endcomment %}
+
+
+
+    <div class="row3">
+      <div>
+        <p style="color:blue;">Select Any</p>
+        <form>
+          <input
+            type="checkbox"
+            name="data"
+            value="yesterday"
+            class="mycheck"
+          />
+          See data from yesterday<br />
+          <input
+            type="checkbox"
+            name="data"
+            value="last_week"
+            class="mycheck"
+          />See data from last week<br />
+          <input
+            type="checkbox"
+            name="data"
+            value="last_month"
+            class="mycheck"
+          />See data from last month<br />
+        </form>
+      </div>
+      <div>
+        <p style="color:blue;">Filter by Time Range</p>
+        <label for="birthday">start Date:</label>
+        <input type="date" id="start" name="trip-start" value="2022-2-23" />
+
+        <label for="birthday">end Date:</label>
+        <input type="date" id="end" name="trip-start" value="2022-2-23" />
+        <p id="alart" style="color:red"></p>
+      </div>
+    </div>
+  </div>
 </div>
 
-{% endblock body %}
+{% endblock body %} {%block script%} {%endblock script%}
