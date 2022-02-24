@@ -22,7 +22,7 @@ class UserLoginView(View):
         else:
             greeting={}
             greeting['form'] = UserLoginForm
-            return render(request,'auth-login.html', greeting)
+            return render(request, 'auth-login.html', greeting)
 
     def post(self,request):
         if(request.method == "POST"):
