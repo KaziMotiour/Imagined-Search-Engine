@@ -2,7 +2,7 @@ var date1, date2 = ''
 
   
 let list = document.getElementById("myList");
-let url = "http://127.0.0.1:8000/filter-resuls/?q=hello"
+let url = "https://imagined-search.herokuapp.com/filter-resuls/?q=hello"
   
 
 var values=''
@@ -153,7 +153,7 @@ endDate.addEventListener('change', (event) => {
 });
 
 
-    fetch("http://127.0.0.1:8000/filter-resuls/?q=hello", {
+    fetch("https://imagined-search.herokuapp.com/filter-resuls/?q=hello", {
         headers:{
             'Accept': 'application/json',
             'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
